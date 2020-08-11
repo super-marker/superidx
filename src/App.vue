@@ -3,12 +3,7 @@
     <v-layout>
       <v-sider collapsible :collapsed="customCollapsed" :trigger="false" :collapsed-width="64">
         <div class="logo">SUPERIDX</div>
-        <v-menu mode="inline" :data="menuData4">
-          <template slot-scope="{data}">
-            <i v-if="data.icon" :class="'anticon anticon-' + data.icon"></i>
-            <span class="nav-text">{{data.name}}</span>
-          </template>
-        </v-menu>
+        <v-menu mode="inline" :data="menuData"></v-menu>
       </v-sider>
       <v-layout>
         <v-header class="header bg-primary" :style="{padding: 0 }">
@@ -24,8 +19,26 @@
     </v-layout>
   </div>
 </template>
-
+<script>
+import Menu from './menu/index'
+export default {
+  data () {
+    return {
+      customCollapsed: false,
+      menuData: Menu
+    }
+  },
+  methods: {
+    toggle () {
+      this.customCollapsed = !this.customCollapsed
+    }
+  }
+}
+</script>
 <style>
+  #app .ant-menu-item{
+    white-space: unset;
+  }
   #app,.main{
     height: 100%;
     margin:0 auto;
@@ -70,29 +83,3 @@
     display: none;
   }
 </style>
-
-<script>
-export default {
-  data () {
-    return {
-      customCollapsed: false,
-      menuData4: [{
-        name: 'nav 1',
-        icon: 'user',
-        selected: true
-      }, {
-        name: 'nav 2',
-        icon: 'video-camera'
-      }, {
-        name: 'nav 3',
-        icon: 'upload'
-      }]
-    }
-  },
-  methods: {
-    toggle () {
-      this.customCollapsed = !this.customCollapsed
-    }
-  }
-}
-</script>
