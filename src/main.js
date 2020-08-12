@@ -2,10 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import 'vue-beauty/package/style/vue-beauty.min.css'
+import './assets/css/public.css'
 import App from './App'
 import router from './router'
 import vueBeauty from 'vue-beauty'
+import axios from 'axios'
 
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 Vue.use(vueBeauty)
